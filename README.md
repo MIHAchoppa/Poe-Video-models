@@ -8,7 +8,7 @@ This repository demonstrates how to use fine-tuned video generation models throu
 
 ## Available Models
 
-- **Sora2-SOuth-PArk**: A fine-tuned video generation model with South Park styling
+- **Sora2-South-Park**: A fine-tuned video generation model with South Park styling
 - **cole-bennet-gpt**: A video generation model designed for video-related tasks
 
 ## Prerequisites
@@ -64,7 +64,7 @@ const client = new OpenAI({
 });
 
 const chat = await client.chat.completions.create({
-    model: "Sora2-SOuth-PArk",
+    model: "Sora2-South-Park",
     messages: [{ role: "user", content: "Hello world" }],
 });
 
@@ -150,7 +150,7 @@ The Poe API is compatible with the OpenAI SDK. Configure the client with:
 ## Model Parameters
 
 When creating a video generation request, you can specify:
-- **model**: The name of the video model (e.g., "Sora2-SOuth-PArk", "cole-bennet-gpt")
+- **model**: The name of the video model (e.g., "Sora2-South-Park", "cole-bennet-gpt")
 - **messages**: An array of message objects with `role` and `content`
 
 ## Files

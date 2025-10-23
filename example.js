@@ -9,7 +9,7 @@ const client = new OpenAI({
 async function generateVideo() {
     try {
         const chat = await client.chat.completions.create({
-            model: "Sora2-SOuth-PArk",
+            model: "Sora2-South-Park",
             messages: [{ role: "user", content: "Hello world" }],
         });
 
