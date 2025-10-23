@@ -4,11 +4,25 @@ The most amazing fine-tuned video generators on the net, accessible via Poe API!
 
 ## Overview
 
-This repository demonstrates how to use fine-tuned video generation models through Poe's API using the OpenAI SDK. These models allow you to generate high-quality videos using natural language prompts.
+This repository demonstrates how to use fine-tuned video generation models through Poe's API. It provides both JavaScript (Node.js) and Python implementations with examples for multiple video models.
 
 ## Available Models
 
 - **Sora2-SOuth-PArk**: A fine-tuned video generation model with South Park styling
+- **cole-bennet-gpt**: A video generation model designed for video-related tasks
+
+## Prerequisites
+
+### For JavaScript/Node.js
+- Node.js installed
+- npm package manager
+
+### For Python
+- Python 3.6 or higher
+- `requests` library (install with `pip install requests`)
+
+### General
+- A valid Poe API key from [Poe](https://poe.com)
 
 ## Installation
 
@@ -19,27 +33,33 @@ cd Poe-Video-models
 ```
 
 2. Install dependencies:
+
+**For JavaScript:**
 ```bash
 npm install
 ```
 
+**For Python:**
+```bash
+pip install -r requirements.txt
+```
+
 3. Set up your Poe API key:
-   - Get your API key from [Poe](https://poe.com)
-   - Set it as an environment variable:
-     ```bash
-     export POE_API_KEY="your_api_key_here"
-     ```
-   - Or replace `YOUR_POE_API_KEY` in the example code
+```bash
+export POE_API_KEY="your_api_key_here"
+```
 
 ## Usage
 
-### Basic Example
+### JavaScript/Node.js Example
+
+The repository includes a Node.js example using the OpenAI SDK:
 
 ```javascript
 const { OpenAI } = require("openai");
 
 const client = new OpenAI({
-    apiKey: "YOUR_POE_API_KEY", // or process.env.POE_API_KEY
+    apiKey: process.env.POE_API_KEY, // or "YOUR_POE_API_KEY"
     baseURL: "https://api.poe.com/v1",
 });
 
@@ -51,23 +71,106 @@ const chat = await client.chat.completions.create({
 console.log(chat.choices[0].message.content);
 ```
 
-### Running the Example
-
+**Running the JavaScript example:**
 ```bash
 node example.js
 ```
 
+### Python Example
+
+The repository also includes a Python client for easier integration:
+
+```bash
+python3 poe_api_client.py
+```
+
+Or use it in your own Python code:
+
+```python
+from poe_api_client import PoeAPIClient
+
+# Initialize client
+client = PoeAPIClient()
+
+# Make a request
+response = client.chat_completion(
+    model="cole-bennet-gpt",
+    messages=[{"role": "user", "content": "Hello world"}]
+)
+
+print(response)
+```
+
+**Running Python examples:**
+```bash
+python3 examples.py
+```
+
+### Using curl (Shell script)
+
+The repository includes a shell script that demonstrates the exact curl command:
+
+```bash
+./poe_api_request.sh
+```
+
+Or run the curl command directly:
+
+```bash
+curl "https://api.poe.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $POE_API_KEY" \
+    -d '{
+        "model": "cole-bennet-gpt",
+        "messages": [{"role": "user", "content": "Hello world"}]
+    }'
+```
+
 ## API Configuration
 
-The Poe API is compatible with the OpenAI SDK. Simply configure the client with:
+The Poe API is compatible with the OpenAI SDK. Configure the client with:
 - **apiKey**: Your Poe API key
 - **baseURL**: `https://api.poe.com/v1`
+
+### API Endpoint
+
+- **URL**: `https://api.poe.com/v1/chat/completions`
+- **Method**: POST
+- **Headers**:
+  - `Content-Type: application/json`
+  - `Authorization: Bearer $POE_API_KEY`
+- **Body**:
+  ```json
+  {
+    "model": "model-name",
+    "messages": [{"role": "user", "content": "your prompt here"}]
+  }
+  ```
 
 ## Model Parameters
 
 When creating a video generation request, you can specify:
-- **model**: The name of the video model (e.g., "Sora2-SOuth-PArk")
+- **model**: The name of the video model (e.g., "Sora2-SOuth-PArk", "cole-bennet-gpt")
 - **messages**: An array of message objects with `role` and `content`
+
+## Files
+
+### JavaScript Files
+- `example.js` - Node.js example using OpenAI SDK
+- `package.json` - Node.js dependencies
+
+### Python Files
+- `poe_api_client.py` - Python client library for the Poe API
+- `examples.py` - Python usage examples
+- `test_poe_api_client.py` - Tests for the Python client
+- `requirements.txt` - Python dependencies
+
+### Shell Scripts
+- `poe_api_request.sh` - Shell script with curl command example
+
+### Documentation
+- `README.md` - This documentation file
+- `IMPLEMENTATION_SUMMARY.md` - Implementation details
 
 ## License
 
