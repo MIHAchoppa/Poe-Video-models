@@ -1,0 +1,21 @@
+{
+  "name": "poe-video-models",
+  "version": "1.0.0",
+  "description": "Fine-tuned video generators accessible via Poe API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example.js"
+  },
+  "keywords": [
+    "poe",
+    "video",
+    "generation",
+    "ai",
+    "sora"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.20.0"
+  }
+}
