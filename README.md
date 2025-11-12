@@ -150,8 +150,14 @@ The Poe API is compatible with the OpenAI SDK. Configure the client with:
 ## Model Parameters
 
 When creating a video generation request, you can specify:
-- **model**: The name of the video model (e.g., "Sora2-South-Park", "cole-bennet-gpt")
+- **model**: The name of the video model (e.g., "Sora-Easy", "free-video-generator", "Sora2-South-Park", "cole-bennet-gpt")
 - **messages**: An array of message objects with `role` and `content`
+
+## Notes
+
+- Replace `"Hello world"` with your actual video generation prompt
+- All models accept the same API format
+- Ensure your API key has the necessary permissions to access these models
 
 ## Files
 
