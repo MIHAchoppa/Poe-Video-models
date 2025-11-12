@@ -4,10 +4,12 @@ The most amazing fine-tuned video generators on the net, accessible via Poe API!
 
 ## Overview
 
-This repository demonstrates how to use fine-tuned video generation models through Poe's API. It provides both JavaScript (Node.js) and Python implementations with examples for multiple video models.
+This repository demonstrates how to use video generation models through Poe's API. It provides both JavaScript (Node.js) and Python implementations with examples for multiple video models.
 
 ## Available Models
 
+- **Sora-Easy**: Video generation model accessible through the Poe API
+- **free-video-generator**: Free video generation model accessible through the Poe API
 - **Sora2-South-Park**: A fine-tuned video generation model with South Park styling
 - **cole-bennet-gpt**: A video generation model designed for video-related tasks
 
@@ -106,7 +108,7 @@ print(response)
 python3 examples.py
 ```
 
-### Using curl (Shell script)
+### Using curl
 
 The repository includes a shell script that demonstrates the exact curl command:
 
@@ -114,7 +116,45 @@ The repository includes a shell script that demonstrates the exact curl command:
 ./poe_api_request.sh
 ```
 
-Or run the curl command directly:
+Or run the curl command directly for any of the available models:
+
+**Example: Using Sora-Easy Model**
+
+```bash
+curl "https://api.poe.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $POE_API_KEY" \
+    -d '{
+        "model": "Sora-Easy",
+        "messages": [{"role": "user", "content": "Hello world"}]
+    }'
+```
+
+**Example: Using free-video-generator Model**
+
+```bash
+curl "https://api.poe.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $POE_API_KEY" \
+    -d '{
+        "model": "free-video-generator",
+        "messages": [{"role": "user", "content": "Hello world"}]
+    }'
+```
+
+**Example: Using Sora2-South-Park Model**
+
+```bash
+curl "https://api.poe.com/v1/chat/completions" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $POE_API_KEY" \
+    -d '{
+        "model": "Sora2-South-Park",
+        "messages": [{"role": "user", "content": "Hello world"}]
+    }'
+```
+
+**Example: Using cole-bennet-gpt Model**
 
 ```bash
 curl "https://api.poe.com/v1/chat/completions" \
@@ -146,6 +186,20 @@ The Poe API is compatible with the OpenAI SDK. Configure the client with:
     "messages": [{"role": "user", "content": "your prompt here"}]
   }
   ```
+
+## Request Format
+
+```json
+{
+    "model": "model-name",
+    "messages": [
+        {
+            "role": "user",
+            "content": "your prompt here"
+        }
+    ]
+}
+```
 
 ## Model Parameters
 
